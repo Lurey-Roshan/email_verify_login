@@ -1,0 +1,6 @@
+https://shafikshaon.medium.com/user-registration-with-email-verification-in-django-8aeff5ce498d
+
+
+https://pypi.org/project/Django-Verify-Email/
+
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Forms
