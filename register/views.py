@@ -8,12 +8,22 @@ def home(request):
 	return render(request,'home.html')
 
 
-def login(request):
+def loggerin(request):
 	form=LoginForm()
 	if request.method=="POST":
 		form=LoginForm(request.POST)
-		username=form.get('username')
-		password=form.get('password')
+		if form.is_valid():
+
+			username=form.cleaned_data.get('username')
+			password=form.cleaned_data.get('password')
+			user=authenticate(username= username, password=password)
+			if user is not None:
+				login(request,user)
+				messages.success(request, "logged in successfully")
+				return redirect('home')
+			else:
+				return HttpResponse(request,"Please verify your email")
+
 	context={
 		'form':form
 	}
@@ -26,7 +36,7 @@ def signup(request):
 		if form.is_valid():
 			inactive_user = send_verification_email(request, form)
 
-			form.save()
+			#form.save()
 			messages.success(request,"Your account has been Created, Please validate your email")
 			return redirect('login')
 		else:

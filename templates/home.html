@@ -5,8 +5,16 @@
 	<title>Home page</title>
 </head>
 <body>
+	{% if messages%}
+	{%for m in messages%}
+	{{m.message}}
+	{% endif%}
 <h3>This is home  page</h3>
+{%if user.is_authenticated%}
+<p>Congratulations yopu are logged in</p>
+{%else%}
 <a href="{% url 'login' %}">Login</a>
 <a href="{% url 'signup' %}">Signup</a>
+{%endif%}
 </body>
 </html>

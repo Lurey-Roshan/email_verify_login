@@ -108,9 +108,22 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_ID') 
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PW')
+EXPIRE_AFTER=60*60
+#EXPIRE_AFTER="1h"
+MAX_RETRIES=5
 
 DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'
 
+#if templated need to be customed
+#HTML_MESSAGE_TEMPLATE = "path/to/html_template.html"
+
+#VERIFICATION_SUCCESS_TEMPLATE = "path/to/success.html"
+
+#VERIFICATION_FAILED_TEMPLATE = "path/to/failed.html"
+# by defult all are set in app
+SUBJECT = 'Email Verification'# default subject is : Email Verification Mail
+LOGIN_URL = 'name of your login pattern'#Note: This variable is also used by django.
+VERIFICATION_SUCCESS_TEMPLATE = None# Redirect directly to login page without stopping at success message page. The user will be directly sent to login page bypassing success page.
 
 
 # Internationalization
